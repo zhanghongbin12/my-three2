@@ -24,11 +24,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 14
           cache: npm
 
       - name: Install deps
-        run: npm ci --include=dev
+        run: npm ci
+        env:
+          NPM_CONFIG_PRODUCTION: "false"
 
       - name: Build
         run: npm run build
